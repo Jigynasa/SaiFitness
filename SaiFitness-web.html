@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saifitness Gym - Elevate Your Fitness Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Color Scheme */
+    :root {
+      --neon-green: #39FF14;
+      --silver: #C0C0C0;
+      --light-silver: #E0E0E0;
+      --white: #FFFFFF;
+      --black: #000000;
+      --dark-gray: #1a1a1a;
+      --medium-gray: #282828;
+      --light-gray: #3a3a3a;
+      --gradient-start: rgba(0, 0, 0, 0.8);
+      --gradient-end: rgba(0, 0, 0, 0.5);
+      --shadow-color: rgba(57, 255, 20, 0.3);
+      --hero-gradient: linear-gradient(to bottom right, var(--neon-green), #2aff7a);
+    }
+
+    /* General Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      /* Adjusted scroll-padding-top for better consistency */
+      scroll-padding-top: 70px;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--black);
+      color: var(--silver);
+      line-height: 1.7;
+      overflow-x: hidden; /* Crucial to prevent horizontal scroll */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--neon-green);
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+      margin-bottom: 45px;
+    }
+
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 4px;
+        background-color: var(--neon-green);
+        border-radius: 2px;
+        box-shadow: 0 0 8px var(--shadow-color);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      margin-bottom: 18px;
+      color: var(--light-silver);
+      font-size: 1rem;
+    }
+
+    a {
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--neon-green);
+    }
+
+    ul {
+      list-style: none;
+      /* Removed default padding which can sometimes cause issues */
+      /* padding-left: 20px; */
+    }
+
+    /* Specific list styling if needed */
+    section ul {
+        padding-left: 20px; /* Apply only within sections if needed */
+    }
+
+    section ul li {
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 25px;
+    }
+
+    section ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 9px;
+        width: 8px;
+        height: 8px;
+        background-color: var(--neon-green);
+        border-radius: 50%;
+    }
+
+    /* Header */
+    header {
+      background-color: rgba(20, 20, 20, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 15px 30px; /* Adjusted padding later */
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.6);
+      transition: background-color 0.3s ease;
+      width: 100%; /* Ensure header takes full width */
+    }
+
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      margin-bottom: 5px;
+      display: inline-block;
+      letter-spacing: 1px;
+      color: var(--white);
+      font-weight: 700;
+    }
+     header h1 span {
+        color: var(--neon-green);
+     }
+
+    nav {
+        /* Ensure nav itself doesn't cause overflow */
+        max-width: 100%;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px 30px; /* Consistent row and column gap */
+      margin-top: 10px;
+      padding-left: 0; /* Reset padding */
+    }
+
+    nav li {
+        padding-left: 0; /* Reset padding from general ul styles */
+    }
+    nav li::before {
+        display: none; /* Remove list bullets */
+    }
+
+    nav a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 5px 0;
+      position: relative;
+      color: var(--light-silver);
+      display: inline-block; /* Helps with positioning */
+    }
+
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        display: block;
+        margin-top: 4px;
+        right: 0;
+        background: var(--neon-green);
+        transition: width 0.4s ease, left 0.4s ease;
+    }
+
+    nav a:hover {
+        color: var(--white);
+    }
+
+    nav a:hover::after {
+        width: 100%;
+        left: 0;
+        background-color: var(--neon-green);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      height: 95vh;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      overflow: hidden; /* Prevents background bleed */
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.5));
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      color: var(--white);
+      max-width: 850px;
+      padding: 0 20px; /* Add horizontal padding */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .hero-text h2 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      margin-bottom: 25px;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+      color: transparent;
+      background: var(--hero-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      padding-bottom: 0;
+      font-weight: 700;
+    }
+     .hero-text h2::after {
+        display: none;
+     }
+
+    .hero-text p {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      margin-bottom: 35px;
+      color: var(--light-silver);
+      font-weight: 300;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Call to Action Button */
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: var(--neon-green);
+        color: var(--black);
+        padding: 14px 35px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .cta-button:hover {
+        background-color: var(--white);
+        color: var(--black);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(57, 255, 20, 0.4);
+    }
+
+    .cta-button:hover::before {
+        left: 100%;
+    }
+
+    .cta-button .arrow-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-color: currentColor;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+        opacity: 0;
+        transform: translateX(-5px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition-delay: 0.1s;
+    }
+
+    .cta-button:hover .arrow-icon {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+
+    /* Section Styles */
+    .section {
+      padding: 90px 40px;
+      text-align: center;
+      overflow: hidden; /* Prevents content overflow */
+      position: relative;
+    }
+
+    /* Explicit Backgrounds for better control */
+    #about { background-color: var(--medium-gray); }
+    #featured-video { background-color: var(--black); } /* Featured Video Section */
+    #video-showcase { background-color: var(--black); padding: 0; height: 60vh; min-height: 450px; } /* Background Video */
+    #classes { background-color: var(--medium-gray); }
+    #trainers { background-color: var(--black); }
+    #gallery { background-color: var(--dark-gray); padding: 70px 0; } /* Showcase section */
+    #testimonials { background-color: var(--medium-gray); }
+    #contact { background-color: var(--black); }
+    footer { background-color: var(--dark-gray); }
+
+
+    .section p {
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+
+    /* Featured Video Section (Using iframe) */
+    #featured-video .hosted-video-container {
+        max-width: 900px; /* Max width of the video container */
+        margin: 30px auto 0; /* Spacing below heading, centered */
+        background-color: var(--black); /* Ensure background is black behind iframe */
+        border-radius: 10px; /* Optional: rounded corners */
+        overflow: hidden; /* Contain the iframe within rounded corners */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Add some depth */
+        /* Use aspect-ratio for responsive height */
+        aspect-ratio: 16 / 9; /* Adjust if your video is different */
+        height: auto; /* Override fixed height if set */
+        position: relative; /* Needed for absolute positioning of iframe */
+        /* Ensure it doesn't exceed viewport width on small screens */
+        width: 100%;
+    }
+
+    #featured-video .hosted-video-container iframe {
+        /* Make iframe fill the container */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none; /* Remove default iframe border */
+        border-radius: 10px; /* Match container rounding */
+    }
+
+     #featured-video p.video-description { /* Style for the paragraph below video */
+        margin-top: 30px;
+        font-style: italic;
+        color: var(--silver);
+     }
+
+
+    /* Background Video Showcase Section */
+    #video-showcase {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        overflow: hidden; /* Ensure video doesn't overflow */
+    }
+
+    .video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Covers the area, might crop */
+        z-index: 1;
+        filter: brightness(0.5);
+    }
+
+    .video-overlay {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 30px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 10px;
+        max-width: 90%; /* Use percentage for better scaling */
+        width: 700px; /* Keep a max width for larger screens */
+        margin: 0 auto; /* Center overlay */
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+        animation-delay: 0.5s;
+    }
+
+    .video-overlay h2 {
+        color: var(--white);
+        margin-bottom: 15px;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+    .video-overlay h2::after {
+        background-color: var(--white);
+        box-shadow: none;
+    }
+
+    .video-overlay p {
+        color: var(--light-silver);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 0;
+    }
+
+
+    /* Card Styles (Classes, etc.) */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 35px;
+      margin-top: 60px;
+    }
+
+    .card {
+      background-color: var(--dark-gray);
+      border: 1px solid var(--light-gray);
+      padding: 35px;
+      border-radius: 15px;
+      text-align: left;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                  box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                  border-color 0.4s ease,
+                  background-color 0.4s ease;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      border-color: var(--neon-green);
+      box-shadow: 0 12px 35px var(--shadow-color);
+      background-color: var(--medium-gray);
+    }
+
+    .card h3 {
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: var(--silver);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* Trainer Styles */
+    .trainer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 35px;
+      margin-top: 60px;
+    }
+
+    .trainer {
+      background-color: var(--medium-gray);
+      border: 1px solid var(--dark-gray);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                  box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                  background-color 0.4s ease;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    .trainer:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      background-color: var(--light-gray);
+    }
+
+    .trainer img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 25px auto; /* Center image */
+      display: block; /* Ensure block display for margin auto */
+      border: 4px solid var(--neon-green);
+      box-shadow: 0 0 20px var(--shadow-color);
+      transition: transform 0.3s ease;
+    }
+    .trainer:hover img {
+        transform: scale(1.05);
+    }
+
+    .trainer h3 {
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .trainer p {
+        font-size: 0.9rem;
+        color: var(--silver);
+        margin-bottom: 6px;
+    }
+    .trainer p:last-of-type {
+        margin-bottom: 0;
+    }
+
+    /* Moving Flex Section (Gallery/Showcase) */
+    #gallery h2 { /* Center gallery title */
+        text-align: center;
+    }
+    .moving-flex-container {
+      width: 100%;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      margin-top: 60px; /* Add space below title */
+    }
+
+    .moving-flex {
+      display: flex;
+      width: max-content; /* Allows content to dictate width */
+      animation: moveFlex 45s linear infinite;
+    }
+
+    .moving-flex-inner {
+        display: flex; /* Keeps items inline */
+    }
+
+    .flex-item {
+      flex: 0 0 auto; /* Prevent shrinking/growing */
+      width: 280px; /* Base width */
+      margin: 0 18px;
+      transition: transform 0.35s ease, filter 0.35s ease;
+      filter: brightness(0.9);
+    }
+
+    .flex-item img {
+      width: 100%;
+      height: 200px; /* Base height */
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      border: 2px solid var(--medium-gray);
+      transition: border-color 0.3s ease;
+    }
+
+    .moving-flex-container:hover .moving-flex {
+        animation-play-state: paused;
+    }
+    .flex-item:hover {
+        transform: scale(1.06);
+        filter: brightness(1.1);
+    }
+     .flex-item:hover img {
+        border-color: var(--neon-green);
+     }
+
+    @keyframes moveFlex {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); } /* Scrolls exactly one set */
+    }
+
+    /* Testimonial Styles */
+    .testimonial-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-top: 60px;
+    }
+
+    .testimonial {
+      background-color: var(--dark-gray);
+      border-left: 6px solid var(--neon-green);
+      padding: 30px 35px;
+      border-radius: 10px;
+      font-style: italic;
+      text-align: left;
+      position: relative;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    .testimonial:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        background-color: var(--medium-gray);
+    }
+
+    .testimonial::before {
+        content: '“';
+        position: absolute;
+        top: 15px;
+        left: 18px;
+        font-size: 3.5rem;
+        color: var(--neon-green);
+        opacity: 0.15;
+        font-family: serif;
+        line-height: 1;
+        z-index: 0;
+    }
+
+    .testimonial p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .testimonial p:last-child {
+        font-style: normal;
+        font-weight: 600;
+        text-align: right;
+        color: var(--neon-green);
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+
+    /* Contact Section */
+    #contact p {
+        margin-bottom: 12px;
+    }
+    /* Ensure long links wrap */
+    #contact a {
+        font-weight: 500;
+        border-bottom: 1px dashed var(--neon-green);
+        padding-bottom: 2px;
+        transition: border-bottom-style 0.3s ease, color 0.3s ease;
+        word-break: break-word; /* Break long email/tel links */
+    }
+    #contact a:hover {
+        border-bottom-style: solid;
+        color: var(--white);
+    }
+
+    .social-links {
+        margin-top: 25px;
+    }
+    .social-links p {
+        margin-bottom: 15px;
+    }
+    .social-links a {
+        margin: 0 12px;
+        font-size: 1.3rem;
+        border-bottom: none;
+        display: inline-block;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .social-links a:hover {
+        transform: scale(1.2) translateY(-2px);
+        color: var(--neon-green);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--silver);
+      margin-top: 0;
+      border-top: 1px solid var(--medium-gray);
+    }
+
+    /* Entrance Animations */
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Keyframes for initial hero/video overlay animation */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* --- RESPONSIVE ADJUSTMENTS --- */
+
+    /* Large Tablets / Small Laptops */
+    @media (max-width: 992px) {
+        html { scroll-padding-top: 65px; }
+        header { padding: 15px 25px; }
+        .section { padding: 70px 30px; }
+        .card-container, .trainer-container, .testimonial-container { gap: 25px; }
+        .flex-item { width: 240px; margin: 0 15px; }
+        .flex-item img { height: 180px; }
+        #featured-video .hosted-video-container { max-width: 95%; /* Adjust max width */ }
+        .trainer img { width: 120px; height: 120px; } /* Slightly smaller trainer images */
+    }
+
+    /* Tablets */
+    @media (max-width: 768px) {
+      html { scroll-padding-top: 60px; } /* Adjust based on header height */
+      header { padding: 12px 20px; }
+      nav ul {
+          gap: 15px 20px; /* Adjust gap */
+      }
+      .hero { height: 85vh; min-height: 550px; }
+      .section { padding: 60px 20px; }
+      h2 { font-size: clamp(1.8rem, 4.5vw, 2.2rem); margin-bottom: 35px; }
+      /* Ensure grids become single column */
+      .card-container, .trainer-container, .testimonial-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .card, .trainer, .testimonial { padding: 25px; }
+      .trainer img { width: 110px; height: 110px; }
+      #video-showcase { height: 55vh; min-height: 400px; }
+      #featured-video .hosted-video-container {
+          margin-top: 20px;
+          /* aspect-ratio still handles height well */
+       }
+      .flex-item { width: 200px; margin: 0 12px; } /* Adjust flex item size */
+      .flex-item img { height: 150px; }
+      .moving-flex { animation-duration: 38s; } /* Slightly faster scroll */
+      .social-links a { font-size: 1.2rem; margin: 0 10px; }
+      .hero-text { padding: 0 15px; } /* Ensure hero text doesn't touch edges */
+      .video-overlay { padding: 25px; } /* Adjust overlay padding */
+    }
+
+    /* Mobile Phones */
+     @media (max-width: 480px) {
+        html { scroll-padding-top: 55px; } /* Further adjust */
+        header { padding: 10px 15px; }
+        header h1 { font-size: 1.5rem; }
+        /* Reduce nav gap significantly to prevent awkward wrapping/overflow */
+        nav ul {
+            gap: 10px 15px; /* Smaller gaps */
+            justify-content: center; /* Ensure centered even when wrapped */
+        }
+        nav a { font-size: 0.8rem; letter-spacing: 0.5px; }
+        .hero { height: 75vh; min-height: 500px; }
+        .hero-text h2 { font-size: clamp(2.2rem, 8vw, 3rem); }
+        .hero-text p { font-size: clamp(1rem, 4vw, 1.1rem); }
+        .cta-button { padding: 12px 28px; font-size: 0.9rem; }
+        .section { padding: 50px 15px; }
+        h2 { font-size: clamp(1.6rem, 5vw, 1.9rem); } /* Adjusted clamp */
+        h2::after { width: 60px; height: 3px; }
+        #video-showcase { height: 50vh; min-height: 350px; }
+        .video-overlay { padding: 20px; max-width: 95%; }
+        .card, .trainer, .testimonial { padding: 20px; }
+        .trainer img { width: 100px; height: 100px; }
+        .flex-item { width: 180px; margin: 0 8px; } /* Smaller flex items */
+        .flex-item img { height: 130px; }
+        .moving-flex { animation-duration: 30s; } /* Faster scroll for smaller items */
+        .testimonial::before { font-size: 3rem; top: 10px; left: 12px; } /* Adjust quote size/pos */
+        .social-links a { font-size: 1.1rem; margin: 0 8px; }
+        footer { padding: 30px 15px; }
+     }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Saifi<span>tness</span></h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#featured-video">Video Tour</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#trainers">Trainers</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Elevate Your Fitness Journey</h2>
+      <p>Discover your strength, achieve your goals, and become the best version of yourself at Saifitness.</p>
+      <a href="#classes" class="cta-button">
+        Explore Classes
+        <span class="arrow-icon"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section fade-in-up">
+    <h2>About Saifitness</h2>
+    <p>Saifitness is more than just a gym; it's a premier fitness destination and community dedicated to empowering you on your unique journey. We provide cutting-edge equipment, world-class trainers, and an electrifying atmosphere designed for results and holistic well-being.</p>
+    <p>Our mission is to cultivate a supportive, high-energy environment where personalized fitness plans meet individual aspirations. Whether you aim for significant weight loss, muscle gain, peak athletic performance, or enhanced mental clarity, Saifitness is your partner in redefining limits.</p>
+  </section>
+
+  <!-- Featured Video Section (Using YouTube iFrame with Autoplay/Loop) -->
+  <section id="featured-video" class="section fade-in-up">
+    <h2>Take a Tour Inside</h2>
+    <div class="hosted-video-container">
+      <!-- YouTube iFrame with parameters for autoplay (muted) and loop -->
+      <!-- **** VIDEO ID UPDATED HERE **** -->
+      <iframe
+        src="https://www.youtube.com/embed/MLnbFpE6RLU?autoplay=1&mute=1&loop=1&playlist=MLnbFpE6RLU&controls=0&showinfo=0&rel=0"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="Saifitness Gym Tour Video">
+        <!-- Style is handled by CSS rules for .hosted-video-container iframe -->
+      </iframe>
+    </div>
+    <p class="video-description">Get a glimpse of the energy and community at our state-of-the-art facility.</p>
+  </section>
+
+  <!-- Background Video Showcase Section (Still uses HTML5 video - REPLACE SRC) -->
+  <section id="video-showcase">
+    <video class="video-background" autoplay loop muted playsinline poster="path/to/your/background-video-poster.jpg"> <!-- *** REPLACE POSTER *** -->
+      <!-- *** REPLACE VIDEO SRC *** -->
+      <!-- Using a placeholder video for demonstration if you haven't replaced it -->
+      <source src="https://designsupply-web.com/samplecontent/vender/codepen/20181014.mp4" type="video/mp4">
+      <!-- <source src="your-gym-video.mp4" type="video/mp4"> -->
+      <!-- <source src="your-gym-video.webm" type="video/webm"> -->
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay">
+      <h2>Feel The Energy</h2>
+      <p>Immerse yourself in the dynamic atmosphere of Saifitness.</p>
+    </div>
+  </section>
+
+  <!-- Classes Section -->
+  <section id="classes" class="section">
+    <h2>Signature Classes</h2>
+    <div class="card-container">
+      <!-- Card content -->
+      <div class="card fade-in-up"><h3>Cardio Ignition</h3><p>High-octane interval training designed to torch calories, skyrocket endurance, and forge cardiovascular resilience.</p></div>
+      <div class="card fade-in-up"><h3>Forge & Sculpt</h3><p>Build functional strength, increase metabolic rate, and sculpt a powerful physique with our expert-led programs.</p></div>
+      <div class="card fade-in-up"><h3>Dynamic Mobility</h3><p>Enhance range of motion, alleviate muscle tightness, and bulletproof your body against injuries with targeted flows.</p></div>
+      <div class="card fade-in-up"><h3>Apex CrossFit</h3><p>Experience constantly varied, high-intensity functional movements. Push your boundaries and unlock peak fitness.</p></div>
+      <div class="card fade-in-up"><h3>Core Matrix Pilates</h3><p>Develop profound core strength, refine posture, and cultivate long, lean muscle control.</p></div>
+      <div class="card fade-in-up"><h3>Rhythm Rush Zumba</h3><p>Dance into peak fitness! An exhilarating, high-energy workout blending global rhythms and infectious fun.</p></div>
+      <div class="card fade-in-up"><h3>Power Cycle Spin</h3><p>Conquer challenging terrains and explosive sprints in our immersive indoor cycling experience.</p></div>
+      <div class="card fade-in-up"><h3>Combat Strike Kickboxing</h3><p>Unleash power, build resilience, and get an incredible full-body workout combining martial arts and cardio.</p></div>
+    </div>
+  </section>
+
+  <!-- Trainers Section -->
+  <section id="trainers" class="section">
+    <h2>Meet Our Elite Trainers</h2>
+    <div class="trainer-container">
+       <!-- Trainer content -->
+       <div class="trainer fade-in-up"><img src="https://via.placeholder.com/150/39FF14/000000?text=JD" alt="Trainer John Doe"><h3>Raju Kumar</h3><p>Head Performance Coach | CPT, CSCS</p><p>Expert in strength, conditioning & athletic development.</p></div>
+       <div class="trainer fade-in-up"><img src="https://via.placeholder.com/150/C0C0C0/000000?text=JS" alt="Trainer Jane Smith"><h3>Aalok mohanty</h3><p>Yoga & Mobility Specialist | RYT 500</p><p>Master of Vinyasa, flexibility training & mindfulness.</p></div>
+       <div class="trainer fade-in-up"><img src="https://via.placeholder.com/150/39FF14/000000?text=MJ" alt="Trainer Mike Johnson"><h3>Girish jena</h3><p>Cardio & Endurance Pro | CPT</p><p>Specializes in HIIT, run coaching & metabolic conditioning.</p></div>
+    </div>
+  </section>
+
+  <!-- Moving Flex Section / Gallery - UPDATED WITH YOUR IMAGES -->
+  <section id="gallery" class="section showcase-section"> <!-- Added section class for consistent padding -->
+      <h2>Inside Saifitness</h2>
+      <div class="moving-flex-container">
+          <div class="moving-flex">
+              <div class="moving-flex-inner"> <!-- First set - UPDATED -->
+                  <div class="flex-item"><img src="https://i.ibb.co/9Hrb5JmB/IMG-20231201-WA0025.jpg" alt="Weight machine"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/FbNcKqsR/IMG-20231201-WA0031.jpg" alt="Heavy lift area"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/ZpBR7Cw3/IMG-20231201-WA0023.jpg" alt="Pull ups machine"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/8DG4hdH6/IMG-20231201-WA0024.jpg" alt="Running machine"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/7LVwLPs/IMG-20231201-WA0026.jpg" alt="Height weight lifting"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/WWw5RkWR/IMG-20231201-WA0027.jpg" alt="Dumbbell rack"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/Pz98H2nP/IMG-20231201-WA0028.jpg" alt="Running machine"></div>
+                  <div class="flex-item"><img src="https://i.ibb.co/SwQRPYdT/IMG-20231201-WA0030.jpg" alt="GYM Entrance"></div>
+              </div>
+              <div class="moving-flex-inner" aria-hidden="true"> <!-- Duplicate set -->
+                   <div class="flex-item"><img src="https://i.ibb.co/9Hrb5JmB/IMG-20231201-WA0025.jpg" alt="Weight machine"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/FbNcKqsR/IMG-20231201-WA0031.jpg" alt="Heavy lift area"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/ZpBR7Cw3/IMG-20231201-WA0023.jpg" alt="Pull ups machine"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/8DG4hdH6/IMG-20231201-WA0024.jpg" alt="Running machine"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/7LVwLPs/IMG-20231201-WA0026.jpg" alt="Height weight lifting"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/WWw5RkWR/IMG-20231201-WA0027.jpg" alt="Dumbbell rack"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/Pz98H2nP/IMG-20231201-WA0028.jpg" alt="Running machine"></div>
+                   <div class="flex-item"><img src="https://i.ibb.co/SwQRPYdT/IMG-20231201-WA0030.jpg" alt="GYM Entrance"></div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section">
+    <h2>Member Transformations</h2>
+    <div class="testimonial-container">
+       <!-- Testimonial content -->
+       <div class="testimonial fade-in-up"><p>"Saifitness isn't just a gym, it's a catalyst for change. The trainers push you beyond limits you never thought possible. I've never felt stronger or more alive!"</p><p>- Sarah L.</p></div>
+       <div class="testimonial fade-in-up"><p>"From the cutting-edge equipment to the electric atmosphere, Saifitness is unparalleled. The results I've seen here surpass anything I achieved elsewhere."</p><p>- Mark T.</p></div>
+       <div class="testimonial fade-in-up"><p>"The sheer variety and quality of classes keep me hooked. Every session is a new challenge. Saifitness makes fitness an addiction, not a chore."</p><p>- Lisa M.</p></div>
+       <div class="testimonial fade-in-up"><p>"Impeccably clean, incredibly motivating, and staffed by true professionals who invest in your success. Saifitness sets the standard."</p><p>- Tom S.</p></div>
+       <div class="testimonial fade-in-up"><p>"The community here is amazing. Everyone supports each other. It feels like a family united by the goal of self-improvement. Best decision I ever made."</p><p>- Karen B.</p></div>
+       <div class="testimonial fade-in-up"><p>"I was intimidated at first, but the trainers made me feel welcome and guided me every step. Now, I'm smashing goals I never dreamed of!"</p><p>- Chris W.</p></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section fade-in-up">
+    <h2>Connect With Saifitness</h2>
+    <p>Ready to ignite your potential? Visit our state-of-the-art facility or reach out today!</p>
+    <p><strong>Location:</strong> 123 Fitness Ave, Muscle City, ST 12345</p>
+    <p><strong>Email:</strong> <a href="mailto:info@saifitness.com">info@saifitness.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+11234567890">(123) 456-7890</a></p>
+    <div class="social-links">
+        <p>Follow our journey & get daily motivation:</p>
+        <!-- Add your actual social media links here -->
+        <!-- Using placeholder icons for visual representation -->
+        <a href="#" target="_blank" aria-label="Facebook" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+        <a href="#" target="_blank" aria-label="Instagram" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.28-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" target="_blank" aria-label="Twitter" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.422.724-.665 1.56-.665 2.458 0 1.943 1.048 3.617 2.518 4.586-.915-.029-1.788-.28-2.53-.697v.08c0 2.69 1.917 4.94 4.463 5.45-.467.127-.96.193-1.464.193-.358 0-.704-.034-1.04-.096.71 2.206 2.77 3.814 5.22 3.858-1.904 1.49-4.3 2.38-6.9 2.38-.448 0-.89-.026-1.325-.076 2.46 1.578 5.38 2.508 8.54 2.508 10.13 0 15.68-8.525 15.48-15.95.46-.338.85-.76 1.16-1.23z"/></svg></a>
+        <a href="#" target="_blank" aria-label="YouTube" title="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="current-year"></span> Saifitness Gym. Elevating Fitness. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Update Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Intersection Observer for Fade-in Animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the element is visible
+      };
+
+      const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Optional delay can be added via data-delay attribute on the element
+            const delay = entry.target.dataset.delay ? parseInt(entry.target.dataset.delay) : 0;
+            setTimeout(() => {
+              entry.target.classList.add('is-visible');
+            }, delay);
+            observer.unobserve(entry.target); // Stop observing once visible
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      // Target elements with the 'fade-in-up' class
+      const elementsToAnimate = document.querySelectorAll('.fade-in-up');
+      elementsToAnimate.forEach(el => {
+        observer.observe(el);
+      });
+
+      // Duplicate items for seamless scroll in Gallery (Check if already done)
+      const movingFlex = document.querySelector('.moving-flex');
+      if (movingFlex) {
+          const innerContainers = movingFlex.querySelectorAll('.moving-flex-inner');
+          // Only duplicate if there's exactly one inner container initially
+          if (innerContainers.length === 1) {
+              const innerContent = innerContainers[0];
+              const clonedContent = innerContent.cloneNode(true);
+              clonedContent.setAttribute('aria-hidden', 'true'); // Hide from screen readers
+              movingFlex.appendChild(clonedContent);
+          } else if (innerContainers.length === 2 && !innerContainers[1].hasAttribute('aria-hidden')) {
+             // Safety check: If somehow the second one isn't marked as hidden, mark it.
+             innerContainers[1].setAttribute('aria-hidden', 'true');
+          }
+      }
+    });
+  </script>
+
+  <!-- No extra JS needed for YouTube iframe control -->
+
+</body>
+</html>
